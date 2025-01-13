@@ -50,6 +50,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_total">
@@ -59,11 +60,46 @@
             android:layout_height="wrap_content"
             android:hint="Digite o numero de pessoas na mesa"
             android:inputType="number"
-            android:maxLength="3"/>
+            android:maxLength="3" />
 
     </com.google.android.material.textfield.TextInputLayout>
-    
-     <androidx.constraintlayout.widget.Guideline
+
+
+    <RadioGroup
+        android:id="@+id/rg_percentage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="@+id/til_number_of_people"
+        app:layout_constraintStart_toStartOf="@+id/til_number_of_people"
+        app:layout_constraintTop_toBottomOf="@+id/til_number_of_people">
+
+        <RadioButton
+            android:id="@+id/rd_option_one"
+            android:text="10%"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <RadioButton
+            android:id="@+id/rd_option_two"
+            android:text="15%"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <RadioButton
+            android:id="@+id/rd_option_three"
+            android:text="20%"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+
+    </RadioGroup>
+
+    <androidx.constraintlayout.widget.Guideline
          android:id="@+id/vertical_guideline"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
@@ -79,7 +115,7 @@
            android:layout_width="0dp"
            android:layout_height="wrap_content"
            app:layout_constraintStart_toStartOf="@+id/til_number_of_people"
-           app:layout_constraintTop_toBottomOf="@+id/til_number_of_people"
+           app:layout_constraintTop_toBottomOf="@+id/rg_percentage"
            app:layout_constraintStart_toEndOf="@+id/vertical_guideline"/>
     <Button
         android:id="@+id/btn_done"
@@ -89,7 +125,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="@+id/til_number_of_people"
-        app:layout_constraintTop_toBottomOf="@+id/til_number_of_people"
+        app:layout_constraintTop_toBottomOf="@+id/rg_percentage"
         app:layout_constraintStart_toEndOf="@+id/vertical_guideline"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
