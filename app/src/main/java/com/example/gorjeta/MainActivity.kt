@@ -27,33 +27,44 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        var percentage: Int = 0
         binding.rdOptionOne.setOnCheckedChangeListener { _, isChecked ->
-            println("Maira: $isChecked")
-
+            if (isChecked) {
+                percentage = 10
+            }
         }
-
         binding.rdOptionTwo.setOnCheckedChangeListener { _, isChecked ->
-            println("Maira: $isChecked")
-
+                if (isChecked) {
+                    percentage = 15
+                }
         }
 
         binding.rdOptionThree.setOnCheckedChangeListener { _, isChecked ->
-            println("Maira: $isChecked")
-
+                if (isChecked) {
+                    percentage = 20
+                }
         }
-
-
         binding.btnClean.setOnClickListener {
-            println("Maira " + binding.tieTotal.text)
-            println("Maira" + binding.tieNumPeople.text)
+                println("Maira " + binding.tieTotal.text)
+                println("Maira" + binding.tieNumPeople.text)
+            }
+
+        binding.btnDone.setOnClickListener {
+                val totalTable: Float = binding.tieTotal.text.toString().toFloat()
+                val nPeople: Float = binding.tieNumPeople.text.toString().toFloat()
+
+                val totalTemp = totalTable / nPeople
+                val tips = totalTemp * percentage / 100
+                val totalWithTips = totalTemp + tips
+                println("Maira" + totalWithTips)
+
+            }
+
         }
-
-
     }
-}
+
