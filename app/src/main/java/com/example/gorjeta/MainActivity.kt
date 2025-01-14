@@ -11,19 +11,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.gorjeta.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 
 class MainActivity : AppCompatActivity() {
 
-    // valor total da conta
-    // numero de pessoas
-    //porcentagem da gorjeta
-    //10%, 15%  ou 20%
-    //Calcular
-    //Limpar
-    //Recuperar as views do layout
-    // find by view by id
-    //ViewBinding
+
 
     private lateinit var binding: ActivityMainBinding
 
@@ -55,13 +48,23 @@ class MainActivity : AppCompatActivity() {
             }
 
         binding.btnDone.setOnClickListener {
-                val totalTable: Float = binding.tieTotal.text.toString().toFloat()
-                val nPeople: Float = binding.tieNumPeople.text.toString().toFloat()
+               val totalTableTemp = binding.tieTotal.text
+               val nPeopleTemp = binding.tieNumPeople.text
 
-                val totalTemp = totalTable / nPeople
-                val tips = totalTemp * percentage / 100
-                val totalWithTips = totalTemp + tips
-                println("Maira" + totalWithTips)
+                if (totalTableTemp?.isEmpty() == true || nPeopleTemp?.isEmpty()== true){
+                    Snackbar.make(binding.tieTotal, "Preencha todos os campos",Snackbar.LENGTH_LONG)
+                        .show()
+
+                } else {
+                    val totalTable: Float = totalTableTemp.toString().toFloat()
+                    val nPeople: Float = nPeopleTemp.toString().toFloat()
+
+                    val totalTemp = totalTable / nPeople
+                    val tips = totalTemp * percentage / 100
+                    val totalWithTips = totalTemp + tips
+                    binding.tvResult.text = "Total com Tips: $totalWithTips"
+
+                }
 
             }
 
