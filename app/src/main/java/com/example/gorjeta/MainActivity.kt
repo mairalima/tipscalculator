@@ -66,6 +66,15 @@ class MainActivity : AppCompatActivity() {
 
                 }
 
+                  binding.btnClean.setOnClickListener{
+                      binding.tvResult.text = ""
+                      binding.tieTotal.setText("")
+                      binding.tieNumPeople.setText("")
+                      binding.rdOptionOne.isChecked = false
+                      binding.rdOptionTwo.isChecked= false
+                      binding.rdOptionThree.isChecked = false
+                  }
+
             }
 
         }
