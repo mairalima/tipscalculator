@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.gorjeta.databinding.ActivityMainBinding
 import com.google.android.material.textfield.TextInputEditText
 
 class MainActivity : AppCompatActivity() {
@@ -20,18 +21,18 @@ class MainActivity : AppCompatActivity() {
     //Recuperar as views do layout
     // find by view by id
     //ViewBinding
+
+    private lateinit var binding: ActivityMainBinding
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val btnClean: Button = findViewById(R.id.btn_clean)
-        val btnDone: Button = findViewById(R.id.btn_done)
-        val edtTotal: TextInputEditText = findViewById(R.id.tie_total)
-        val edtNumPeople: TextInputEditText = findViewById(R.id.tie_num_people)
-
-        btnClean.setOnClickListener {
-            println("Maira " + edtTotal.text)
-            println("Maira" + edtNumPeople.text)
+        binding.btnClean.setOnClickListener {
+            println("Maira " + binding.tieTotal.text)
+            println("Maira" + binding.tieNumPeople.text)
         }
 
 
