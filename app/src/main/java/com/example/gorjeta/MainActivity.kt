@@ -94,29 +94,30 @@ class MainActivity : AppCompatActivity() {
 
                 val intent = Intent(this, SumaryActivity::class.java)
                 intent.apply {
-                 putExtra("totalTable",totalTable)
-                 putExtra("nPeople",numOfPeopleSelected)
-                 putExtra("percentage",percentage)
-                 putExtra("totalAmount" ,totalWithTips)
+                    putExtra("totalTable", totalTable)
+                    putExtra("nPeople", numOfPeopleSelected)
+                    putExtra("percentage", percentage)
+                    putExtra("totalAmount", totalWithTips)
                 }
+                clean()
                 startActivity(intent)
 
 
             }
 
             binding.btnClean.setOnClickListener {
-                binding.tvResult.text = ""
-                binding.tieTotal.setText("")
-                binding.rdOptionOne.isChecked = false
-                binding.rdOptionTwo.isChecked = false
-                binding.rdOptionThree.isChecked = false
-
-
+                clean()
             }
-
-
-
         }
+
+    }
+    private fun clean() {
+        binding.tvResult.text = ""
+        binding.tieTotal.setText("")
+        binding.rdOptionOne.isChecked = false
+        binding.rdOptionTwo.isChecked = false
+        binding.rdOptionThree.isChecked = false
+
     }
 }
 
